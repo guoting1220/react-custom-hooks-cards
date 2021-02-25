@@ -4,4 +4,22 @@ function choice(values) {
   return values[randIdx];
 }
 
-export { choice };
+function formatCard(data) {
+  return {    
+    image: data.cards[0].image
+  }
+}
+
+function formatPokeCard(data) {
+  return {
+    front: data.sprites.front_default,
+    back: data.sprites.back_default,
+    name: data.name,
+    stats: data.stats.map(stat => ({
+      value: stat.base_stat,
+      name: stat.stat.name
+    }))
+  }
+}
+
+export { choice, formatCard, formatPokeCard };

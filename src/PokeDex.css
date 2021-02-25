@@ -20,3 +20,7 @@
 .PokeDex-card-area {
   flex: 1;
 }
+
+.PokeDex-removeBtn {
+  background-color: greenyellow;
+}

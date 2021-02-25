@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import pokemonList from "./pokemonList";
-import { choice } from "./helpers";
+import { choice, formatPokeCard } from "./helpers";
 
 /* Select element to choose from common pokemon. */
 function PokemonSelect({ add, pokemon = pokemonList }) {
-  const [pokeIdx, setPokeIdx] = useState(0);
+  const [poke, setPoke] = useState(pokemon[0]);
   
   const handleChange = evt => {
-    setPokeIdx(evt.target.value);
+    setPoke(evt.target.value);
   };
 
   return (
     <div>
       <select onChange={handleChange}>
         {pokemon.map((p, idx) => (
-          <option key={idx} value={idx}>
+          <option key={idx} value={p}>
             {p}
           </option>
         ))}
       </select>
-      <button onClick={() => add(pokemon[pokeIdx])}>Catch one!</button>
-      <button onClick={() => add(choice(pokemon))}>I'm feeling lucky</button>
+      <button onClick={() => add(formatPokeCard, poke)}>Catch one!</button>
+      <button onClick={() => add(formatPokeCard, choice(pokemon))}>I'm feeling lucky</button>
     </div>
   );
 }
